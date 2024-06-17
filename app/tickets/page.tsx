@@ -1,3 +1,4 @@
+import PriorityBadge from '@/components/PriorityBadge';
 import StatusBadge from '@/components/StatusBadge';
 import prisma from '@/prisma/db';
 
@@ -5,7 +6,7 @@ const Tickets = async () => {
   const tickets = await prisma.ticket.findMany();
   return (
     <>
-      <table class="w-full">
+      <table className="w-full">
         <thead>
           <tr className="p-2 bg-slate-200 space-x-4">
             <th>Id</th>
@@ -37,7 +38,7 @@ const Tickets = async () => {
                     <StatusBadge status={ticket.status} />
                   </td>
                   <td className="px-4 py-2 text-sm text-gray-700">
-                    {ticket.priority}
+                    <PriorityBadge priority={ticket.priority} />
                   </td>
                   <td className="px-4 py-2 text-sm text-gray-700">
                     {new Date(ticket.createdAt).toLocaleDateString('en-US', {
